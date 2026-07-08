@@ -1,6 +1,12 @@
 "use client";
 
 import { useState } from "react";
+const committees = [
+  "Media & Publicity Committee",
+  "Training & Skill Development Committee",
+  "Placement Coordination Committee",
+  "Event Management Committee",
+];
 
 export default function Recruitment() {
   const [formData, setFormData] = useState({
@@ -238,65 +244,84 @@ const data = await response.json();
           </p>
                     <div className="grid md:grid-cols-2 gap-5">
 
-            <select
-              name="pref1"
-              required
-              value={formData.pref1}
-              onChange={handleChange}
-              className="border rounded-lg px-4 py-3"
-            >
-              <option value="">1st Preference</option>
-              
-              <option>Media & Publicity Committee</option>
-              <option>Training & Skill Development Committee</option>
-              <option>Placement Coordination Committee</option>
-              <option>Event Management Committee</option>
-            </select>
+          <select
+  name="pref1"
+  required
+  value={formData.pref1}
+  onChange={handleChange}
+  className="border rounded-lg px-4 py-3"
+>
+  <option value="">1st Preference</option>
+  {committees.map((committee) => (
+    <option key={committee} value={committee}>
+      {committee}
+    </option>
+  ))}
+</select>
 
-            <select
-              name="pref2"
-              required
-              value={formData.pref2}
-              onChange={handleChange}
-              className="border rounded-lg px-4 py-3"
-            >
-              <option value="">2nd Preference</option>
-              
-              <option>Media & Publicity Committee</option>
-              <option>Training & Skill Development Committee</option>
-              <option>Placement Coordination Committee</option>
-              <option>Event Management Committee</option>
-            </select>
+<select
+  name="pref2"
+  required
+  value={formData.pref2}
+  onChange={handleChange}
+  className="border rounded-lg px-4 py-3"
+>
+  <option value="">2nd Preference</option>
+  {committees.map((committee) => (
+    <option
+      key={committee}
+      value={committee}
+      disabled={committee === formData.pref1}
+    >
+      {committee}
+    </option>
+  ))}
+</select>
 
-            <select
-              name="pref3"
-              required
-              value={formData.pref3}
-              onChange={handleChange}
-              className="border rounded-lg px-4 py-3"
-            >
-              <option value="">3rd Preference</option>
-              
-              <option>Media & Publicity Committee</option>
-              <option>Training & Skill Development Committee</option>
-              <option>Placement Coordination Committee</option>
-              <option>Event Management Committee</option>
-            </select>
+<select
+  name="pref3"
+  required
+  value={formData.pref3}
+  onChange={handleChange}
+  className="border rounded-lg px-4 py-3"
+>
+  <option value="">3rd Preference</option>
+  {committees.map((committee) => (
+    <option
+      key={committee}
+      value={committee}
+      disabled={
+        committee === formData.pref1 ||
+        committee === formData.pref2
+      }
+    >
+      {committee}
+    </option>
+  ))}
+</select>
 
-            <select
-              name="pref4"
-              required
-              value={formData.pref4}
-              onChange={handleChange}
-              className="border rounded-lg px-4 py-3"
-            >
-              <option value="">4th Preference</option>
-              
-              <option>Media & Publicity Committee</option>
-              <option>Training & Skill Development Committee</option>
-              <option>Placement Coordination Committee</option>
-              <option>Event Management Committee</option>
-            </select>
+<select
+  name="pref4"
+  required
+  value={formData.pref4}
+  onChange={handleChange}
+  className="border rounded-lg px-4 py-3"
+>
+  <option value="">4th Preference</option>
+  {committees.map((committee) => (
+    <option
+      key={committee}
+      value={committee}
+      disabled={
+        committee === formData.pref1 ||
+        committee === formData.pref2 ||
+        committee === formData.pref3
+      }
+    >
+      {committee}
+    </option>
+  ))}
+</select>
 
           </div>
 
