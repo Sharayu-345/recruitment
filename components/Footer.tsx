@@ -78,7 +78,7 @@ export default function Footer() {
                 alt="RIT College Logo"
                 width={75}
                 height={50}
-                className="object-contain"
+                className="w-full h-auto object-cover"
               />
             </div>
 

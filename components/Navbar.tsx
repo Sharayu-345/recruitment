@@ -20,6 +20,7 @@ export default function Navbar() {
           <Image
             src="/images/logo.jpeg"
             alt="Rise & Recruit"
+             sizes="(max-width: 768px) 100vw, 50vw"
             width={55}
             height={55}
             className="rounded-full"
