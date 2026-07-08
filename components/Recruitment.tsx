@@ -103,7 +103,10 @@ const data = await response.json();
 };
 
   return (
-    <section className="bg-[#0B1849] py-12 md:py-20 px-4 sm:px-6">
+    <section
+  id="recruitment"
+  className="bg-[#0B1849] py-12 md:py-20 px-4 sm:px-6"
+>
 <div className="w-full max-w-4xl mx-auto bg-white rounded-2xl shadow-2xl p-5 sm:p-8 md:p-10">
 
        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center text-[#0B1849]">

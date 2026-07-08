@@ -51,15 +51,21 @@ export default function Navbar() {
         </div>
 
         {/* Buttons */}
-        <div className="flex w-full md:w-auto gap-3">
-          <button className="flex-1 md:flex-none border border-white/30 rounded-xl px-5 py-2 text-white hover:bg-white/10">
-            Admin Login
-          </button>
+       <div className="flex w-full md:w-auto gap-3">
+  <Link
+    href="/admin/login"
+    className="flex-1 md:flex-none border border-white/30 rounded-xl px-5 py-2 text-white hover:bg-white/10 text-center"
+  >
+    Admin Login
+  </Link>
 
-          <button className="flex-1 md:flex-none rounded-xl px-5 py-2 bg-blue-500 text-white hover:bg-blue-600">
-            Apply Now →
-          </button>
-        </div>
+  <Link
+    href="#recruitment"
+    className="flex-1 md:flex-none rounded-xl px-5 py-2 bg-blue-500 text-white hover:bg-blue-600 text-center"
+  >
+    Apply Now →
+  </Link>
+</div>
 
       </nav>
     </header>
