@@ -180,7 +180,7 @@ const data = await response.json();
               <option>FY</option>
               <option>SY</option>
               <option>TY</option>
-              <option>Final Year</option>
+              
             </select>
 
           </div>
@@ -200,6 +200,7 @@ const data = await response.json();
               <option>Computer Science & Information Technology</option>
               <option>Artificial Intelligence & Data Science</option>
               <option>Electronics & Telecommunication</option>
+              <option>Robotics and Automation</option>
               <option>Electrical Engineering</option>
               <option>Mechanical Engineering</option>
               <option>Civil Engineering</option>
