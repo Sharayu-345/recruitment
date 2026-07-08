@@ -8,7 +8,7 @@ const leadership = [
   { title: "Chief Placement Coordinator", desc: "Drives placement activities and industry connections." },
   { title: "Chief Media & Publicity", desc: "Manages branding, social media, and outreach." },
   { title: "Chief Training & Skill Development", desc: "Organizes workshops and skill-building sessions." },
-  { title: "Chief Feedback & Analysis", desc: "Collects feedback and improves club performance." },
+  { title: "Chief event manager", desc: "Creating schedules and coordinating all activities.." },
 ];
 
 const committees = [
@@ -25,8 +25,8 @@ const committees = [
     desc: "Handles social media, branding, and event promotion.",
   },
   {
-    title: "Documentation & Feedback",
-    desc: "Maintains records and gathers feedback for improvement.",
+    title: "Event Management",
+    desc: "Plans and manages recruitment drives, workshops, seminars, and other campus events.",
   },
 ];
 

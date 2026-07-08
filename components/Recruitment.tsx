@@ -250,7 +250,7 @@ const data = await response.json();
               <option>Media & Publicity Committee</option>
               <option>Training & Skill Development Committee</option>
               <option>Placement Coordination Committee</option>
-              <option>Feedback & Analysis Committee</option>
+              <option>Event Management Committee</option>
             </select>
 
             <select
@@ -265,7 +265,7 @@ const data = await response.json();
               <option>Media & Publicity Committee</option>
               <option>Training & Skill Development Committee</option>
               <option>Placement Coordination Committee</option>
-              <option>Feedback & Analysis Committee</option>
+              <option>Event Management Committee</option>
             </select>
 
             <select
@@ -280,7 +280,7 @@ const data = await response.json();
               <option>Media & Publicity Committee</option>
               <option>Training & Skill Development Committee</option>
               <option>Placement Coordination Committee</option>
-              <option>Feedback & Analysis Committee</option>
+              <option>Event Management Committee</option>
             </select>
 
             <select
@@ -295,7 +295,7 @@ const data = await response.json();
               <option>Media & Publicity Committee</option>
               <option>Training & Skill Development Committee</option>
               <option>Placement Coordination Committee</option>
-              <option>Feedback & Analysis Committee</option>
+              <option>Event Management Committee</option>
             </select>
 
           </div>
