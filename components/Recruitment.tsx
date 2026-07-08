@@ -103,14 +103,14 @@ const data = await response.json();
 };
 
   return (
-    <section className="bg-[#0B1849] py-20 px-6">
-      <div className="max-w-4xl mx-auto bg-white rounded-2xl shadow-2xl p-8">
+    <section className="bg-[#0B1849] py-12 md:py-20 px-4 sm:px-6">
+<div className="w-full max-w-4xl mx-auto bg-white rounded-2xl shadow-2xl p-5 sm:p-8 md:p-10">
 
-        <h2 className="text-4xl font-bold text-center text-[#0B1849]">
+       <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center text-[#0B1849]">
           Recruitment Form
         </h2>
 
-        <p className="text-center text-gray-600 mt-2 mb-8">
+        <p className="text-center text-gray-600 text-sm sm:text-base mt-2 mb-6 md:mb-8">
           Fill in your details to apply for the Placement Club.
         </p>
 
@@ -221,7 +221,7 @@ const data = await response.json();
             required
             value={formData.stay}
             onChange={handleChange}
-            className="w-full border rounded-lg px-4 py-3"
+            className="w-full border rounded-xl px-4 py-3 text-base focus:ring-2 focus:ring-[#FF9E20] outline-none"
           >
             <option value="">Choose Accommodation</option>
             <option>College Hostel</option>
@@ -235,14 +235,14 @@ const data = await response.json();
 
           <hr className="my-6" />
 
-          <h3 className="text-2xl font-semibold text-[#0B1849]">
+          <h3 className="text-2xl md:text-3xl font-semibold text-[#0B1849]">
             Committee Preferences
           </h3>
 
           <p className="text-gray-600 mb-4">
             Select your preferences from 1 (highest) to 4 (lowest).
           </p>
-                    <div className="grid md:grid-cols-2 gap-5">
+                   <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
 
           <select
   name="pref1"
