@@ -28,3 +28,4 @@ export default async function connectDB() {
   cached.conn = await cached.promise;
   return cached.conn;
 }
+console.log("URI =", JSON.stringify(MONGODB_URI));

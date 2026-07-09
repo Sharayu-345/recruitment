@@ -72,15 +72,13 @@ export default function Footer() {
           {/* ================= OUR INSTITUTION ================= */}
           <div>
 
-            <div className="mb-4">
-              <Image
-                src="/images/rit.jpeg"
-                alt="RIT College Logo"
-                width={75}
-                height={50}
-                className="w-full h-auto object-cover"
-              />
-            </div>
+<Image
+  src="/images/rit.jpeg"
+  alt="RIT College Logo"
+  width={100}
+  height={100}
+  className="h-auto"
+/>
 
             <h3 className="mb-5 text-lg font-semibold">
               Our Institution
