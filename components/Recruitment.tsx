@@ -101,6 +101,20 @@ const data = await response.json();
     alert("Failed to submit application.");
   }
 };
+const getAvailableCommittees = (currentPref: string) => {
+  const selected = [
+    formData.pref1,
+    formData.pref2,
+    formData.pref3,
+    formData.pref4,
+  ];
+
+  return committees.filter(
+    (committee) =>
+      committee === formData[currentPref as keyof typeof formData] ||
+      !selected.includes(committee)
+  );
+};
 
   return (
     <section
@@ -247,7 +261,7 @@ const data = await response.json();
           </p>
                    <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
 
-          <select
+<select
   name="pref1"
   required
   value={formData.pref1}
@@ -255,7 +269,7 @@ const data = await response.json();
   className="border rounded-lg px-4 py-3"
 >
   <option value="">1st Preference</option>
-  {committees.map((committee) => (
+  {getAvailableCommittees("pref1").map((committee) => (
     <option key={committee} value={committee}>
       {committee}
     </option>
@@ -270,12 +284,8 @@ const data = await response.json();
   className="border rounded-lg px-4 py-3"
 >
   <option value="">2nd Preference</option>
-  {committees.map((committee) => (
-    <option
-      key={committee}
-      value={committee}
-      disabled={committee === formData.pref1}
-    >
+  {getAvailableCommittees("pref2").map((committee) => (
+    <option key={committee} value={committee}>
       {committee}
     </option>
   ))}
@@ -289,15 +299,8 @@ const data = await response.json();
   className="border rounded-lg px-4 py-3"
 >
   <option value="">3rd Preference</option>
-  {committees.map((committee) => (
-    <option
-      key={committee}
-      value={committee}
-      disabled={
-        committee === formData.pref1 ||
-        committee === formData.pref2
-      }
-    >
+  {getAvailableCommittees("pref3").map((committee) => (
+    <option key={committee} value={committee}>
       {committee}
     </option>
   ))}
@@ -311,16 +314,8 @@ const data = await response.json();
   className="border rounded-lg px-4 py-3"
 >
   <option value="">4th Preference</option>
-  {committees.map((committee) => (
-    <option
-      key={committee}
-      value={committee}
-      disabled={
-        committee === formData.pref1 ||
-        committee === formData.pref2 ||
-        committee === formData.pref3
-      }
-    >
+  {getAvailableCommittees("pref4").map((committee) => (
+    <option key={committee} value={committee}>
       {committee}
     </option>
   ))}
