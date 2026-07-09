@@ -60,7 +60,7 @@ export default function Navbar() {
   </Link>
 
   <Link
-    href="#recruitment"
+    href="/#recruitment"
     className="flex-1 md:flex-none rounded-xl px-5 py-2 bg-blue-500 text-white hover:bg-blue-600 text-center"
   >
     Apply Now →
