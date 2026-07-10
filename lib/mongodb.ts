@@ -3,6 +3,8 @@ import mongoose from "mongoose";
 const MONGODB_URI = process.env.MONGODB_URI;
 
 console.log(MONGODB_URI);
+console.log("MONGODB_URI RAW:", process.env.MONGODB_URI);
+console.log("MONGODB_URI JSON:", JSON.stringify(process.env.MONGODB_URI));
 
 if (!MONGODB_URI) {
   throw new Error("MONGODB_URI is not defined");
@@ -31,3 +33,4 @@ export default async function connectDB() {
   return cached.conn;
 }
 console.log("URI =", JSON.stringify(MONGODB_URI));
+
