@@ -3,7 +3,15 @@ import Link from "next/link";
 
 export default function Hero() {
   return (
-    <section className="relative overflow-hidden bg-[#07153A]">
+    <section
+  className="
+  relative
+  overflow-hidden
+  bg-[#07153A]
+  pt-32
+  md:pt-28
+  "
+>
       {/* ===================================================== */}
       {/* BACKGROUND GLOWS (Same Theme as About / Committee) */}
       {/* ===================================================== */}
