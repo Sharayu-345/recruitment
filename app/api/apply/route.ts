@@ -19,18 +19,19 @@ export async function POST(req: Request) {
       application,
     });
 
-  } catch (error) {
+  } catch (error: any) {
 
-    console.log("APPLICATION ERROR:", error);
+  console.error("APPLICATION ERROR:", error);
 
-    return NextResponse.json(
-      {
-        success:false,
-        message:"Server Error"
-      },
-      {
-        status:500
-      }
-    );
-  }
+  return NextResponse.json(
+    {
+      success: false,
+      error: error.message,
+      stack: process.env.NODE_ENV === "development" ? error.stack : undefined,
+    },
+    {
+      status: 500,
+    }
+  );
+}
 }

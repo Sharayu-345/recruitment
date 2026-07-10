@@ -118,10 +118,66 @@ const getAvailableCommittees = (currentPref: string) => {
 
   return (
     <section
-  id="recruitment"
-  className="bg-[#0B1849] py-12 md:py-20 px-4 sm:px-6"
->
-<div className="w-full max-w-4xl mx-auto bg-white rounded-2xl shadow-2xl p-5 sm:p-8 md:p-10">
+      id="recruitment"
+      className="relative overflow-hidden bg-[#07153A] py-12 md:py-20 px-4 sm:px-6"
+    >
+      {/* Background glow */}
+      <div className="absolute left-0 top-0 h-96 w-96 rounded-full bg-[#FE7F2D]/20 blur-[150px]" />
+      <div className="absolute right-0 bottom-0 h-96 w-96 rounded-full bg-blue-500/10 blur-[180px]" />
+
+      {/* Grid overlay */}
+      <div
+        className="absolute inset-0 opacity-[0.06]"
+        style={{
+          backgroundImage: `
+          linear-gradient(to right,#ffffff 1px,transparent 1px),
+          linear-gradient(to bottom,#ffffff 1px,transparent 1px)
+          `,
+          backgroundSize: "70px 70px",
+        }}
+      />
+
+      {/* ================= FLOATING PARTICLES ================= */}
+
+      {/* Top row */}
+      <div className="absolute left-[6%] top-[8%] h-2 w-2 rounded-full bg-[#FE7F2D] animate-ping"></div>
+      <div className="absolute left-[22%] top-[12%] h-2 w-2 rounded-full bg-white animate-pulse"></div>
+      <div className="absolute left-[38%] top-[6%] h-3 w-3 rounded-full bg-cyan-300 animate-ping"></div>
+      <div className="absolute left-[55%] top-[15%] h-2 w-2 rounded-full bg-[#FE7F2D] animate-pulse"></div>
+      <div className="absolute left-[70%] top-[9%] h-2 w-2 rounded-full bg-white animate-ping"></div>
+      <div className="absolute left-[85%] top-[14%] h-3 w-3 rounded-full bg-cyan-300 animate-pulse"></div>
+
+      {/* Middle row */}
+      <div className="absolute left-[10%] top-[38%] h-2 w-2 rounded-full bg-cyan-300 animate-pulse"></div>
+      <div className="absolute left-[28%] top-[45%] h-3 w-3 rounded-full bg-white animate-ping"></div>
+      <div className="absolute left-[45%] top-[35%] h-2 w-2 rounded-full bg-[#FE7F2D] animate-pulse"></div>
+      <div className="absolute left-[60%] top-[48%] h-2 w-2 rounded-full bg-cyan-300 animate-ping"></div>
+      <div className="absolute left-[75%] top-[40%] h-3 w-3 rounded-full bg-white animate-pulse"></div>
+      <div className="absolute left-[90%] top-[46%] h-2 w-2 rounded-full bg-[#FE7F2D] animate-ping"></div>
+
+      {/* Lower-middle row */}
+      <div className="absolute left-[4%] top-[62%] h-2 w-2 rounded-full bg-white animate-pulse"></div>
+      <div className="absolute left-[18%] top-[68%] h-2 w-2 rounded-full bg-[#FE7F2D] animate-ping"></div>
+      <div className="absolute left-[35%] top-[60%] h-3 w-3 rounded-full bg-cyan-300 animate-pulse"></div>
+      <div className="absolute left-[52%] top-[70%] h-2 w-2 rounded-full bg-white animate-ping"></div>
+      <div className="absolute left-[68%] top-[63%] h-2 w-2 rounded-full bg-[#FE7F2D] animate-pulse"></div>
+      <div className="absolute left-[82%] top-[72%] h-3 w-3 rounded-full bg-cyan-300 animate-ping"></div>
+
+      {/* Bottom row */}
+      <div className="absolute left-[8%] top-[88%] h-2 w-2 rounded-full bg-[#FE7F2D] animate-pulse"></div>
+      <div className="absolute left-[25%] top-[92%] h-3 w-3 rounded-full bg-white animate-ping"></div>
+      <div className="absolute left-[42%] top-[86%] h-2 w-2 rounded-full bg-cyan-300 animate-pulse"></div>
+      <div className="absolute left-[58%] top-[93%] h-2 w-2 rounded-full bg-[#FE7F2D] animate-ping"></div>
+      <div className="absolute left-[74%] top-[87%] h-3 w-3 rounded-full bg-white animate-pulse"></div>
+      <div className="absolute left-[90%] top-[91%] h-2 w-2 rounded-full bg-cyan-300 animate-ping"></div>
+
+      {/* Soft Glow Orbs */}
+      <div className="absolute left-[15%] top-[35%] h-24 w-24 rounded-full bg-[#FE7F2D]/10 blur-3xl"></div>
+      <div className="absolute left-[70%] top-[55%] h-24 w-24 rounded-full bg-cyan-400/10 blur-3xl"></div>
+      <div className="absolute left-[40%] top-[80%] h-20 w-20 rounded-full bg-[#FE7F2D]/5 blur-3xl"></div>
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#FE7F2D]/5 to-transparent" />
+
+      <div className="relative w-full max-w-4xl mx-auto bg-white rounded-2xl shadow-2xl p-5 sm:p-8 md:p-10">
 
        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center text-[#0B1849]">
           Recruitment Form
