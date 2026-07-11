@@ -323,7 +323,7 @@ export default function About() {
 
             {[
               {
-                number: "100+",
+                number: "200+",
                 label: "Students Impacted",
               },
               {
@@ -696,41 +696,7 @@ export default function About() {
 
           {/* CTA */}
 
-          <div className="mt-32">
-
-            <div className="relative overflow-hidden rounded-[40px] border border-[#FE7F2D]/30 bg-gradient-to-r from-[#FE7F2D] via-orange-500 to-[#ff944d] px-10 py-16 text-center shadow-[0_30px_80px_rgba(254,127,45,.35)]">
-
-              <div className="absolute -left-20 top-0 h-64 w-64 rounded-full bg-white/10 blur-[120px]" />
-
-              <div className="absolute -right-20 bottom-0 h-64 w-64 rounded-full bg-white/10 blur-[120px]" />
-
-              <Sparkles
-                size={40}
-                className="mx-auto text-white"
-              />
-
-              <h2 className="mt-6 text-4xl font-black text-white md:text-5xl">
-
-                Become a Part of Something Bigger
-
-              </h2>
-
-              <p className="mx-auto mt-6 max-w-3xl text-lg leading-8 text-white/90">
-
-                Leadership begins with taking the first step. Join Rise & Recruit Club to develop your personality, expand your professional network and prepare yourself for a successful career.
-
-              </p>
-
-              <a
-  href="/#recruitment"
-  className="mt-10 inline-block rounded-2xl bg-white px-10 py-4 font-bold text-[#FE7F2D] transition duration-300 hover:scale-105 hover:shadow-2xl"
->
-  Join Rise & Recruit
-</a>
-
-            </div>
-
-          </div>
+          
 
         </div>
 

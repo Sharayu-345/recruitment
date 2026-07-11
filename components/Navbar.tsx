@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 
 const navLinks = [
   { name: "Home", href: "/" },
@@ -11,6 +12,34 @@ const navLinks = [
 ];
 
 export default function Navbar() {
+  const [activeLink, setActiveLink] = useState("Home");
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPos = window.scrollY + 160; // offset for fixed navbar height
+
+      let current = "Home";
+
+      for (const link of navLinks) {
+        if (link.href === "/") continue;
+
+        const id = link.href.replace("/#", "");
+        const el = document.getElementById(id);
+
+        if (el && el.offsetTop <= scrollPos) {
+          current = link.name;
+        }
+      }
+
+      setActiveLink(current);
+    };
+
+    handleScroll();
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     <header className="fixed top-0 z-50 w-full overflow-hidden bg-[#07153A]/90 backdrop-blur-lg border-b border-white/10">
       {/* ================= BACKGROUND GLOW (Same Theme as About) ================= */}
@@ -67,69 +96,50 @@ export default function Navbar() {
           </div>
         </Link>
 
-        {/* Navigation */}
-        <div className="hidden md:flex items-center gap-8">
-          {navLinks.map((item) => (
-            <Link
-              key={item.name}
-              href={item.href}
-              className="group relative text-white transition duration-300 hover:text-[#FE7F2D] hover:-translate-y-0.5"
-            >
-              {item.name}
-              <span className="absolute -bottom-1 left-0 h-[2px] w-0 rounded-full bg-[#FE7F2D] transition-all duration-300 group-hover:w-full" />
-            </Link>
-          ))}
+        {/* Navigation — centered in the navbar */}
+        <div className="hidden md:flex items-center gap-14 md:absolute md:left-1/2 md:-translate-x-1/2">
+          {navLinks.map((item) => {
+            const isActive = activeLink === item.name;
+
+            return (
+              <Link
+                key={item.name}
+                href={item.href}
+                className={`
+                group relative transition duration-300 hover:-translate-y-0.5
+                ${isActive ? "text-[#FE7F2D]" : "text-white hover:text-[#FE7F2D]"}
+                `}
+              >
+                {item.name}
+                <span
+                  className={`
+                  absolute -bottom-1 left-0 h-[2px] rounded-full bg-[#FE7F2D] transition-all duration-300
+                  ${isActive ? "w-full" : "w-0 group-hover:w-full"}
+                  `}
+                />
+              </Link>
+            );
+          })}
         </div>
 
-        {/* Buttons */}
-        <div className="flex w-full md:w-auto gap-3">
-          <Link
-            href="/admin/login"
-            className="
-            flex-1 md:flex-none
-            rounded-xl
-            border
-            border-white/30
-            bg-white/5
-            px-5
-            py-2
-            text-center
-            text-white
-            backdrop-blur
-            transition-all
-            duration-300
-            hover:-translate-y-0.5
-            hover:border-[#FE7F2D]/50
-            hover:bg-white/10
-            hover:shadow-[0_10px_25px_rgba(0,0,0,.25)]
-            active:translate-y-0
-            "
-          >
-            Admin Login
-          </Link>
+        {/* Mobile Navigation */}
+        <div className="flex md:hidden items-center gap-9 flex-wrap justify-center">
+          {navLinks.map((item) => {
+            const isActive = activeLink === item.name;
 
-          <Link
-            href="/#recruitment"
-            className="
-            flex-1 md:flex-none
-            rounded-xl
-            px-5
-            py-2
-            text-center
-            font-semibold
-            text-white
-            bg-[#FE7F2D]
-            transition-all
-            duration-300
-            hover:-translate-y-0.5
-            hover:bg-orange-500
-            hover:shadow-[0_15px_35px_rgba(254,127,45,.4)]
-            active:translate-y-0
-            active:shadow-none
-            "
-          >
-            Apply Now →
-          </Link>
+            return (
+              <Link
+                key={item.name}
+                href={item.href}
+                className={`
+                text-sm transition duration-300
+                ${isActive ? "text-[#FE7F2D] font-semibold" : "text-white/80 hover:text-[#FE7F2D]"}
+                `}
+              >
+                {item.name}
+              </Link>
+            );
+          })}
         </div>
       </nav>
     </header>

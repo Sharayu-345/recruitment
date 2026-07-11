@@ -3,63 +3,60 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 
-export default function AdminLogin() {
+export default function AdminLoginPage() {
   const router = useRouter();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
 
-  const handleLogin = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setError("");
+    setLoading(true);
 
     try {
       const res = await fetch("/api/admin-login", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          email,
-          password,
-        }),
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password }),
       });
 
       const data = await res.json();
 
       if (data.success) {
-        localStorage.setItem("admin", "true");
         router.push("/admin/dashboard");
       } else {
-        alert("Invalid Email or Password");
+        setError(data.message || "Invalid credentials");
       }
-
-    } catch (error) {
-      console.error(error);
-      alert("Something went wrong");
+    } catch (err) {
+      console.error(err);
+      setError("Something went wrong. Please try again.");
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
-    <div className="min-h-screen bg-[#0B1849] flex items-center justify-center px-6">
+    <div className="min-h-screen flex items-center justify-center bg-gray-100 px-4">
       <div className="w-full max-w-md bg-white rounded-2xl shadow-2xl p-8">
-
         <h1 className="text-3xl font-bold text-center text-[#0B1849]">
           Admin Login
         </h1>
 
         <p className="text-center text-gray-500 mt-2 mb-8">
-          Rise & Recruit Admin Panel
+          Sign in to access the Rise & Recruit dashboard.
         </p>
 
-        <form onSubmit={handleLogin} className="space-y-5">
-
+        <form onSubmit={handleSubmit} className="space-y-5">
           <input
             type="email"
             placeholder="Admin Email"
             required
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="w-full border rounded-lg px-4 py-3 focus:ring-2 focus:ring-[#FF9E20] outline-none"
+            className="w-full border rounded-lg px-4 py-3 outline-none focus:ring-2 focus:ring-[#FF9E20]"
           />
 
           <input
@@ -68,18 +65,21 @@ export default function AdminLogin() {
             required
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            className="w-full border rounded-lg px-4 py-3 focus:ring-2 focus:ring-[#FF9E20] outline-none"
+            className="w-full border rounded-lg px-4 py-3 outline-none focus:ring-2 focus:ring-[#FF9E20]"
           />
+
+          {error && (
+            <p className="text-red-600 text-sm text-center">{error}</p>
+          )}
 
           <button
             type="submit"
-            className="w-full bg-[#FF9E20] hover:bg-orange-500 transition py-3 rounded-lg font-semibold"
+            disabled={loading}
+            className="w-full bg-[#FF9E20] hover:bg-orange-500 transition text-black font-semibold py-3 rounded-lg disabled:opacity-60"
           >
-            Login
+            {loading ? "Logging in..." : "Login"}
           </button>
-
         </form>
-
       </div>
     </div>
   );
