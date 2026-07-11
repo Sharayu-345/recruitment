@@ -141,6 +141,34 @@ export default function Navbar() {
             );
           })}
         </div>
+
+        {/* ================= RIGHT — Decorative 3D Stacked Card (desktop only) ================= */}
+        <div className="hidden md:block absolute right-4 lg:right-0 top-1/2 -translate-y-1/2 [perspective:800px]">
+          <div className="group relative [transform-style:preserve-3d] transition-transform duration-500 hover:[transform:rotateY(-10deg)_rotateX(6deg)]">
+            {/* Back layer — creates stacked depth */}
+            <div className="absolute inset-0 translate-x-2 translate-y-2 rounded-2xl border border-white/5 bg-white/5 [transform:translateZ(-18px)]" />
+
+            {/* Mid layer */}
+            <div className="absolute inset-0 translate-x-1 translate-y-1 rounded-2xl border border-white/10 bg-white/5 [transform:translateZ(-9px)]" />
+
+            {/* Front layer */}
+            <div className="relative flex items-center gap-3 rounded-2xl border border-white/10 bg-white/10 px-5 py-3 backdrop-blur-xl shadow-[0_15px_35px_rgba(0,0,0,.4)] transition-all duration-500 group-hover:border-[#FE7F2D]/40 group-hover:shadow-[0_20px_45px_rgba(254,127,45,.25)]">
+              <span className="relative flex h-2.5 w-2.5">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#FE7F2D] opacity-75" />
+                <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-[#FE7F2D]" />
+              </span>
+
+              <div className="leading-tight">
+                <p className="text-white text-xs font-bold uppercase tracking-wide">
+                  Since 2025
+                </p>
+                <p className="text-white/50 text-[11px]">
+                  Growing Community
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
       </nav>
     </header>
   );
