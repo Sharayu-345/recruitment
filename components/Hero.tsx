@@ -8,8 +8,8 @@ export default function Hero() {
   relative
   overflow-hidden
   bg-[#07153A]
-  pt-32
-  md:pt-28
+  pt-24
+  md:pt-20
   "
 >
       {/* ===================================================== */}
@@ -77,7 +77,7 @@ export default function Hero() {
 
       {/* ===================================================== */}
 
-     <div className="relative mx-auto flex lg:min-h-screen max-w-7xl flex-col items-center justify-center lg:justify-between gap-14 px-6 py-12 lg:py-20 lg:flex-row">
+      <div className="relative mx-auto flex max-w-7xl flex-col items-center justify-center lg:justify-between gap-14 px-6 py-12 lg:py-16 lg:flex-row">
         {/* ================= LEFT ================= */}
 
         <div className="max-w-3xl text-center lg:text-left">
