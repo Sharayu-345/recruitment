@@ -4,44 +4,39 @@ import { SignJWT } from "jose";
 const JWT_SECRET = new TextEncoder().encode(process.env.ADMIN_JWT_SECRET as string);
 
 export async function POST(req: Request) {
-  try {
-    const { email, password } = await req.json();
+  const formData = await req.formData();
+  const email = formData.get("email") as string;
+  const password = formData.get("password") as string;
 
-    if (
-      email === process.env.ADMIN_EMAIL &&
-      password === process.env.ADMIN_PASSWORD
-    ) {
-      const token = await new SignJWT({ role: "admin", email })
-        .setProtectedHeader({ alg: "HS256" })
-        .setIssuedAt()
-        .setExpirationTime("8h")
-        .sign(JWT_SECRET);
+  const url = new URL(req.url);
 
-      const response = NextResponse.json({
-        success: true,
-        message: "Login successful",
-      });
+  if (
+    email === process.env.ADMIN_EMAIL &&
+    password === process.env.ADMIN_PASSWORD
+  ) {
+    const token = await new SignJWT({ role: "admin", email })
+      .setProtectedHeader({ alg: "HS256" })
+      .setIssuedAt()
+      .setExpirationTime("8h")
+      .sign(JWT_SECRET);
 
-      response.cookies.set("admin_session", token, {
-        httpOnly: true,
-        secure: process.env.NODE_ENV === "production",
-        sameSite: "lax",
-        path: "/",
-        maxAge: 60 * 60 * 8,
-      });
+    const response = NextResponse.redirect(new URL("/admin/dashboard", url), {
+      status: 303,
+    });
 
-      return response;
-    }
+    response.cookies.set("admin_session", token, {
+      httpOnly: true,
+      secure: true,
+      sameSite: "lax",
+      path: "/",
+      maxAge: 60 * 60 * 8,
+    });
 
-    return NextResponse.json(
-      { success: false, message: "Invalid credentials" },
-      { status: 401 }
-    );
-  } catch (error) {
-    console.error(error);
-    return NextResponse.json(
-      { success: false, message: "Server error" },
-      { status: 500 }
-    );
+    return response;
   }
+
+  return NextResponse.redirect(
+    new URL("/admin/login?error=1", url),
+    { status: 303 }
+  );
 }
