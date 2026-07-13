@@ -1,12 +1,11 @@
 import { NextRequest, NextResponse } from "next/server";
-import jwt from "jsonwebtoken";
+import { jwtVerify } from "jose";
 
-const JWT_SECRET = process.env.ADMIN_JWT_SECRET as string;
+const JWT_SECRET = new TextEncoder().encode(process.env.ADMIN_JWT_SECRET as string);
 
-export function middleware(req: NextRequest) {
+export async function middleware(req: NextRequest) {
   const { pathname } = req.nextUrl;
 
-  // Only guard the dashboard (and anything else under /admin except /admin/login)
   const isProtectedAdminRoute =
     pathname.startsWith("/admin") && pathname !== "/admin/login";
 
@@ -21,10 +20,9 @@ export function middleware(req: NextRequest) {
   }
 
   try {
-    jwt.verify(token, JWT_SECRET);
+    await jwtVerify(token, JWT_SECRET);
     return NextResponse.next();
   } catch (err) {
-    // Invalid or expired token
     const response = NextResponse.redirect(new URL("/admin/login", req.url));
     response.cookies.set("admin_session", "", { maxAge: 0, path: "/" });
     return response;

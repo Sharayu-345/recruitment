@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
-import jwt from "jsonwebtoken";
+import { SignJWT } from "jose";
 
-const JWT_SECRET = process.env.ADMIN_JWT_SECRET as string;
+const JWT_SECRET = new TextEncoder().encode(process.env.ADMIN_JWT_SECRET as string);
 
 export async function POST(req: Request) {
   try {
@@ -11,11 +11,11 @@ export async function POST(req: Request) {
       email === process.env.ADMIN_EMAIL &&
       password === process.env.ADMIN_PASSWORD
     ) {
-      const token = jwt.sign(
-        { role: "admin", email },
-        JWT_SECRET,
-        { expiresIn: "8h" }
-      );
+      const token = await new SignJWT({ role: "admin", email })
+        .setProtectedHeader({ alg: "HS256" })
+        .setIssuedAt()
+        .setExpirationTime("8h")
+        .sign(JWT_SECRET);
 
       const response = NextResponse.json({
         success: true,
@@ -27,27 +27,20 @@ export async function POST(req: Request) {
         secure: process.env.NODE_ENV === "production",
         sameSite: "lax",
         path: "/",
-        maxAge: 60 * 60 * 8, // 8 hours, matches JWT expiry
+        maxAge: 60 * 60 * 8,
       });
 
       return response;
     }
 
     return NextResponse.json(
-      {
-        success: false,
-        message: "Invalid credentials",
-      },
+      { success: false, message: "Invalid credentials" },
       { status: 401 }
     );
   } catch (error) {
     console.error(error);
-
     return NextResponse.json(
-      {
-        success: false,
-        message: "Server error",
-      },
+      { success: false, message: "Server error" },
       { status: 500 }
     );
   }

@@ -62,8 +62,54 @@ export default function Navbar() {
       />
 
       <nav className="relative max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between px-4 md:px-8 py-3 gap-4">
-        {/* Logo */}
-        <Link href="/" className="group flex items-center gap-3">
+        {/* ================= MOBILE TOP ROW — logo left, compact badge right ================= */}
+        <div className="flex md:hidden w-full items-center justify-between">
+          <Link href="/" className="group flex items-center gap-2.5">
+            <div className="relative rounded-full transition-transform duration-500 group-hover:scale-110">
+              <div className="absolute inset-0 rounded-full bg-[#FE7F2D]/0 blur-md transition duration-500 group-hover:bg-[#FE7F2D]/40" />
+              <Image
+                src="/images/logo.jpeg"
+                alt="Rise & Recruit"
+                sizes="15vw"
+                width={40}
+                height={40}
+                className="relative rounded-full border border-white/10"
+              />
+            </div>
+
+            <div>
+              <h1 className="text-white font-bold text-sm leading-tight">
+                Rise & Recruit
+              </h1>
+              <p className="text-gray-300 text-[10px] leading-tight">
+                RIT Student Club
+              </p>
+            </div>
+          </Link>
+
+          {/* Compact decorative 3D badge for mobile */}
+          <div className="[perspective:600px]">
+            <div className="group relative [transform-style:preserve-3d] transition-transform duration-500">
+              <div className="absolute inset-0 translate-x-1 translate-y-1 rounded-xl border border-white/5 bg-white/5 [transform:translateZ(-10px)]" />
+
+              <div className="relative flex items-center gap-2 rounded-xl border border-white/10 bg-white/10 px-3 py-2 backdrop-blur-xl shadow-[0_10px_25px_rgba(0,0,0,.4)]">
+                <span className="relative flex h-2 w-2">
+                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#FE7F2D] opacity-75" />
+                  <span className="relative inline-flex h-2 w-2 rounded-full bg-[#FE7F2D]" />
+                </span>
+
+                <div className="leading-tight">
+                  <p className="text-white text-[10px] font-bold uppercase tracking-wide">
+                    Since 2025
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Logo (desktop) */}
+        <Link href="/" className="hidden md:flex group items-center gap-3">
           <div
             className="
             relative
