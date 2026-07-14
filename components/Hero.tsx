@@ -81,9 +81,7 @@ export default function Hero() {
         {/* ================= LEFT ================= */}
 
         <div className="max-w-3xl text-center lg:text-left">
-          <span className="inline-flex items-center rounded-full border border-[#FE7F2D]/40 bg-[#FE7F2D]/10 px-6 py-3 text-sm font-bold uppercase tracking-[3px] text-[#FE7F2D] backdrop-blur">
-            Recruitment 2026 • Applications Open
-          </span>
+          
 
           <h1 className="mt-8 text-5xl font-black leading-[1] md:text-6xl lg:text-7xl">
             <span className="block tracking-tight text-white">
