@@ -256,7 +256,7 @@ const getAvailableCommittees = (currentPref: string) => {
               className="border rounded-lg px-4 py-3"
             >
               <option value="">Choose Year</option>
-              <option>FY</option>
+              
               <option>SY</option>
               <option>TY</option>
               
@@ -385,7 +385,7 @@ const getAvailableCommittees = (currentPref: string) => {
           <textarea
             name="message"
             rows={5}
-            placeholder="Why do you want to join the Placement Club?"
+            placeholder="Why do you want to join the Placement Club?(1 or 2 sentence)"
             value={formData.message}
             onChange={handleChange}
             className="w-full border rounded-lg px-4 py-3 outline-none focus:ring-2 focus:ring-[#FF9E20]"
