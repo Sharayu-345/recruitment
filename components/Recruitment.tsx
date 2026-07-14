@@ -11,73 +11,6 @@ const committees = [
 export default function Recruitment() {
   const [formData, setFormData] = useState({
     name: "",
-    prn:"",
-    email: "",
-    phone: "",
-    course: "",
-    year: "",
-    department: "",
-    section: "",
-    stay: "",
-    pref1: "",
-    pref2: "",
-    pref3: "",
-    pref4: "",
-    pref5: "",
-    message: "",
-  });
-
-  const handleChange = (
-    e: React.ChangeEvent<
-      HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
-    >
-  ) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-  e.preventDefault();
-
-  try {
-    const response = await fetch("/api/apply", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        fullName: formData.name,
-        prn: formData.prn,
-        email: formData.email,
-        mobile: formData.phone,
-        course: formData.course,
-        year: formData.year,
-        department: formData.department,
-        accommodation: formData.stay,
-        preference1: formData.pref1,
-        preference2: formData.pref2,
-        preference3: formData.pref3,
-        preference4: formData.pref4,
-        whyJoin: formData.message,
-      }),
-    });
-
-    if (!response.ok) {
-  const errorText = await response.text();
-  console.log("SERVER ERROR:", errorText);
-  alert("Server Error");
-  return;
-}
-
-const data = await response.json();
-
-   if (data.success) {
-  alert("Application Submitted Successfully!");
-
-  setFormData({
-    name: "",
     prn: "",
     email: "",
     phone: "",
@@ -93,28 +26,97 @@ const data = await response.json();
     pref5: "",
     message: "",
   });
-} else {
-  alert(data.message);
-}
-  } catch (error) {
-    console.error(error);
-    alert("Failed to submit application.");
-  }
-};
-const getAvailableCommittees = (currentPref: string) => {
-  const selected = [
-    formData.pref1,
-    formData.pref2,
-    formData.pref3,
-    formData.pref4,
-  ];
 
-  return committees.filter(
-    (committee) =>
-      committee === formData[currentPref as keyof typeof formData] ||
-      !selected.includes(committee)
-  );
-};
+  const [submitting, setSubmitting] = useState(false);
+
+  const handleChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
+    >
+  ) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setSubmitting(true);
+
+    try {
+      const response = await fetch(
+        "https://script.google.com/macros/s/AKfycbyMTNUwTgtPGIB8uMOy0VtqGZb2jqWfJmu_e6viJp0I3XqQIag9j4IQZwOLlW2B_g-sbA/exec",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "text/plain;charset=utf-8",
+          },
+          body: JSON.stringify({
+            fullName: formData.name,
+            prn: formData.prn,
+            email: formData.email,
+            mobile: formData.phone,
+            course: formData.course,
+            year: formData.year,
+            department: formData.department,
+            accommodation: formData.stay,
+            preference1: formData.pref1,
+            preference2: formData.pref2,
+            preference3: formData.pref3,
+            preference4: formData.pref4,
+            whyJoin: formData.message,
+          }),
+        }
+      );
+
+      const data = await response.json();
+
+      if (data.success) {
+        alert("Application Submitted Successfully!");
+
+        setFormData({
+          name: "",
+          prn: "",
+          email: "",
+          phone: "",
+          course: "",
+          year: "",
+          department: "",
+          section: "",
+          stay: "",
+          pref1: "",
+          pref2: "",
+          pref3: "",
+          pref4: "",
+          pref5: "",
+          message: "",
+        });
+      } else {
+        alert("Something went wrong. Please try again.");
+      }
+    } catch (error) {
+      console.error(error);
+      alert("Failed to submit application.");
+    } finally {
+      setSubmitting(false);
+    }
+  };
+
+  const getAvailableCommittees = (currentPref: string) => {
+    const selected = [
+      formData.pref1,
+      formData.pref2,
+      formData.pref3,
+      formData.pref4,
+    ];
+
+    return committees.filter(
+      (committee) =>
+        committee === formData[currentPref as keyof typeof formData] ||
+        !selected.includes(committee)
+    );
+  };
 
   return (
     <section
@@ -200,15 +202,15 @@ const getAvailableCommittees = (currentPref: string) => {
             className="w-full border rounded-lg px-4 py-3 outline-none focus:ring-2 focus:ring-[#FF9E20]"
           />
           {/* PRN / Roll Number */}
-<input
-  type="text"
-  name="prn"
-  placeholder="PRN / Roll Number"
-  required
-  value={formData.prn}
-  onChange={handleChange}
-  className="w-full border rounded-lg px-4 py-3 outline-none focus:ring-2 focus:ring-[#FF9E20]"
-/>
+          <input
+            type="text"
+            name="prn"
+            placeholder="PRN / Roll Number"
+            required
+            value={formData.prn}
+            onChange={handleChange}
+            className="w-full border rounded-lg px-4 py-3 outline-none focus:ring-2 focus:ring-[#FF9E20]"
+          />
 
           {/* Email */}
           <input
@@ -256,10 +258,10 @@ const getAvailableCommittees = (currentPref: string) => {
               className="border rounded-lg px-4 py-3"
             >
               <option value="">Choose Year</option>
-              
+
               <option>SY</option>
               <option>TY</option>
-              
+
             </select>
 
           </div>
@@ -304,7 +306,7 @@ const getAvailableCommittees = (currentPref: string) => {
 
           </div>
 
-          
+
 
           <hr className="my-6" />
 
@@ -379,7 +381,7 @@ const getAvailableCommittees = (currentPref: string) => {
 
           </div>
 
-          
+
 
           {/* Why Join */}
           <textarea
@@ -393,9 +395,10 @@ const getAvailableCommittees = (currentPref: string) => {
 
           <button
             type="submit"
-            className="w-full bg-[#FF9E20] hover:bg-orange-500 transition text-black font-semibold py-3 rounded-lg"
+            disabled={submitting}
+            className="w-full bg-[#FF9E20] hover:bg-orange-500 transition text-black font-semibold py-3 rounded-lg disabled:opacity-60"
           >
-            Submit Application
+            {submitting ? "Submitting..." : "Submit Application"}
           </button>
 
         </form>
