@@ -267,44 +267,77 @@ export default function Recruitment() {
           </div>
 
           {/* Department & Section */}
-          <div className="grid md:grid-cols-2 gap-5">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
 
-            <select
-              name="department"
-              required
-              value={formData.department}
-              onChange={handleChange}
-              className="border rounded-lg px-4 py-3"
-            >
-              <option value="">Choose Department</option>
-              <option>Computer Engineering</option>
-              <option>Computer Science & Information Technology</option>
-              <option>Artificial Intelligence & Data Science</option>
-              <option>Electronics & Telecommunication</option>
-              <option>Robotics and Automation</option>
-              <option>Mechatronics Engineering</option>
-              <option>Electrical Engineering</option>
-              <option>Mechanical Engineering</option>
-              <option>Civil Engineering</option>
-              <option>BCA</option>
-              <option>MCA</option>
-            </select>
+  {/* Department */}
+  <select
+    name="department"
+    required
+    value={formData.department}
+    onChange={handleChange}
+    className="
+      w-full
+      min-w-0
+      border
+      border-gray-300
+      rounded-xl
+      px-5
+      py-4
+      text-base
+      bg-white
+      outline-none
+      transition-all
+      duration-300
+      focus:border-[#FE7F2D]
+      focus:ring-2
+      focus:ring-[#FE7F2D]/30
+    "
+  >
+    <option value="">Choose Department</option>
+    <option>Computer Engineering</option>
+    <option>Computer Science & Information Technology</option>
+    <option>Artificial Intelligence & Data Science</option>
+    <option>Electronics & Telecommunication</option>
+    <option>Robotics and Automation</option>
+    <option>Mechatronics Engineering</option>
+    <option>Electrical Engineering</option>
+    <option>Mechanical Engineering</option>
+    <option>Civil Engineering</option>
+    <option>BCA</option>
+    <option>MCA</option>
+  </select>
 
-            {/* Accommodation */}
-          <select
-            name="stay"
-            required
-            value={formData.stay}
-            onChange={handleChange}
-            className="w-full border rounded-xl px-4 py-3 text-base focus:ring-2 focus:ring-[#FF9E20] outline-none"
-          >
-            <option value="">Choose Accommodation</option>
-            <option>College Hostel</option>
-            <option>Localite (Lives with Family)</option>
-            <option>Outside Stay (PG / Flat / Room)</option>
-          </select>
+  {/* Accommodation */}
+  <select
+    name="stay"
+    required
+    value={formData.stay}
+    onChange={handleChange}
+    className="
+      w-full
+      min-w-0
+      border
+      border-gray-300
+      rounded-xl
+      px-5
+      py-4
+      text-base
+      bg-white
+      outline-none
+      transition-all
+      duration-300
+      focus:border-[#FE7F2D]
+      focus:ring-2
+      focus:ring-[#FE7F2D]/30
+    "
+  >
+    <option value="">Choose Accommodation</option>
+    <option>College Hostel</option>
+    <option>Localite (Lives with Family)</option>
+    <option>Outside Stay (PG / Flat / Room)</option>
+  </select>
 
-          </div>
+</div>
 
 
 
@@ -385,13 +418,14 @@ export default function Recruitment() {
 
           {/* Why Join */}
           <textarea
-            name="message"
-            rows={5}
-            placeholder="Why do you want to join the Placement Club?(1 or 2 sentence)"
-            value={formData.message}
-            onChange={handleChange}
-            className="w-full border rounded-lg px-4 py-3 outline-none focus:ring-2 focus:ring-[#FF9E20]"
-          />
+  name="message"
+  rows={5}
+  required
+  placeholder="Why do you want to join the Placement Club? (1–2 sentences)"
+  value={formData.message}
+  onChange={handleChange}
+  className="w-full border rounded-lg px-4 py-3 outline-none focus:ring-2 focus:ring-[#FF9E20]"
+/>
 
           <button
             type="submit"
