@@ -169,7 +169,7 @@ export default function Navbar() {
         </div>
 
         {/* Mobile Navigation */}
-        <div className="flex md:hidden items-center gap-9 flex-wrap justify-center">
+        <div className="flex md:hidden items-center justify-evenly w-full text-sm">
           {navLinks.map((item) => {
             const isActive = activeLink === item.name;
 
