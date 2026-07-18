@@ -15,18 +15,38 @@ const committees = [
   {
     title: "Placement Coordination",
     desc: "Connects students with recruiters and manages placement drives.",
+    responsibilities: [
+      "Coordinate with visiting companies and ensure smooth conduction of placement drives from start to finish.",
+      "Handle on-ground documentation, attendance records, and candidate paperwork during recruitment sessions.",
+      "Manage hospitality for recruiters and collect structured feedback after every drive to improve future processes.",
+    ],
   },
   {
     title: "Skill Development",
     desc: "Conducts technical and soft skill training sessions.",
+    responsibilities: [
+      "Plan and conduct technical and soft-skill training sessions to prepare students for interviews and placements.",
+      "Organize hands-on workshops that help students build practical, industry-relevant skills.",
+      "Continuously identify skill gaps among students and design sessions to support their overall growth.",
+    ],
   },
   {
     title: "Media & Publicity",
     desc: "Handles social media, branding, and event promotion.",
+    responsibilities: [
+      "Capture photos, bites, and short videos whenever a company visits, showcasing the club's activities.",
+      "Promote club events and drives across social media platforms to boost visibility and engagement.",
+      "Maintain consistent branding and create promotional content for every major initiative.",
+    ],
   },
   {
     title: "Event Management",
     desc: "Plans and manages recruitment drives, workshops, seminars, and other campus events.",
+    responsibilities: [
+      "Plan and execute end-to-end logistics for every event, from setup to closing.",
+      "Handle decoration, venue arrangement, and on-ground coordination for a professional event experience.",
+      "Manage scheduling, resources, and real-time troubleshooting to ensure events run smoothly.",
+    ],
   },
 ];
 
@@ -385,6 +405,19 @@ export default function CommitteeSection() {
                   <p className="mt-5 text-lg leading-8 text-white/70">
                     {item.desc}
                   </p>
+
+                  {/* Responsibilities list */}
+                  <ul className="mt-6 space-y-3">
+                    {item.responsibilities.map((point, pointIdx) => (
+                      <li
+                        key={pointIdx}
+                        className="flex items-start gap-3 text-base leading-7 text-white/80"
+                      >
+                        <span className="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-[#FE7F2D]" />
+                        <span>{point}</span>
+                      </li>
+                    ))}
+                  </ul>
 
                   <div
                     className="
